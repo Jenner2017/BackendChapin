@@ -34,6 +34,11 @@ public class LeccionController {
         return service.getLeccionesDtos();
     }
 
+    @GetMapping("/all-by-tipo/{tipo}")
+    public List<LeccionDto> getLeccionesByTipo(@PathVariable @Parameter(description  = "tipo lecciones") String tipo) {
+        return service.getLeccionesByTipo(tipo);
+    }
+
     @GetMapping("/all/{username}")
     public List<UsuarioLeccionesDto> getLeccionesByUsername(@PathVariable @Parameter(description  = "username") String username) {
         return service.getLeccionesByUsername(username);

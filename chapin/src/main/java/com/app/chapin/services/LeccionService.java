@@ -286,4 +286,11 @@ public class LeccionService {
     public UsuarioLeccionesDto convertirLeccionToUsuarioLeccion(Lecciones leccion) {
         return new UsuarioLeccionesDto(leccion.getIdLeccion(), leccion.getTitulo(), leccion.getTipoLeccion(), false);
     }
+
+    public List<LeccionDto> getLeccionesByTipo(String tipo) {
+        return repository.findAllByTipoLeccion(tipo)
+                .stream()
+                .map(this::convertirLeccionAReponseDto)
+                .collect(Collectors.toList());
+    }
 }
